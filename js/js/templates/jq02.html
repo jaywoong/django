@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('button').click(function(){
+            $('ul > li:eq(0)').text('click');
+            str = $('ul > li:eq(1)').text();
+            $('h1').text(str);
+            $('ul > li:not(li:eq(1))').css('color','white');
+        });
+    });
+    </script>
+</head>
+<body>
+    <h1></h1>
+    <button>Click</button>
+    <ul>
+        <li>Menu1</li>
+        <li>Menu2</li>
+        <li>Menu3</li>
+        <li>Menu4</li>
+        <li>Menu5</li>
+    </ul>
+</body>
+</html>

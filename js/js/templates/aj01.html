@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+
+        function display(data){
+            $('h2').text(data);
+        };
+
+        function getdata(){
+           $.ajax({
+                url:'ajs01',
+                type:'GET',
+                datatype:'JSON',
+                success:function(data){
+                    display(data);
+                },
+                error:function(){
+                    alert('error....');
+                }
+           });
+        };
+
+        $(document).ready(function(){
+            $('button').click(function(){
+                getdata();
+            });
+            setInterval(function(){
+                getdata();
+            },1000);
+        });
+    </script>
+</head>
+<body>
+    <h1>aj01</h1>
+    <button>GET DATA</button>
+    <h2></h2>
+</body>
+</html>

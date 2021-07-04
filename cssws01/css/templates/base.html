@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+</head>
+<body>
+  <header>
+      <h1>HTML5, CSS3.0</h1>
+  </header>
+  <ul id="menu">
+      <li><a href="#">HTML5</a></li>
+      <li><a href="#">CSS3.0</a></li>
+      <li><a href="#">JavaScript</a></li>
+      <li><a href="#">jQuery</a></li>
+      <li><a href="#">AJAX</a></li>
+  </ul>
+    {% if section != None %}
+        {% include section %}
+    {% else %}
+        <section></section>
+    {% endif %}
+  <footer></footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#login_form > a').click(function(){
+                id = $('input[name="id"]').val();
+                pwd = $('input[name="pwd"]').val();
+                if(id == '' || id == null){
+                    $('#id_span').text('ID is Mandatory..');
+                    $('input[name="id"]').focus();
+                    return;
+                };
+                if(pwd == '' || pwd == null){
+                    $('#pwd_span').text('PWD is Mandatory..');
+                    $('input[name="pwd"]').focus();
+                    return;
+                };
+                c = confirm('Are You Login Now ?');
+                if(c == true){
+                    $('#login_form').attr('action','loginimpl');
+                    $('#login_form').attr('method','post');
+                    $('#login_form').submit();
+                }else{
+                    $('input[name="id"]').val('');
+                    $('input[name="pwd"]').val('');
+                };
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="login_form">
+        {% csrf_token %}
+        ID<input type="text" name="id"><span id="id_span"></span><br>
+        PWD<input type="password" name="pwd"><span id="pwd_span"></span><br>
+        <a href="#">LOGIN</a>
+    </form>
+</body>
+</html>

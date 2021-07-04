@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <style>
+        div{
+            width:500px;
+            border:2px solid red;
+        }
+    </style>
+    <script>
+        function display(data){
+            $('div').empty();
+            $(data).each(function(index,d){
+                loc = d.location;
+                temp = d.datas;
+                result = '<p>'+loc+' '+temp+'</p>';
+                $('div').append(result);
+            });
+        };
+        function getdata(t){
+            $.ajax({
+                url:'ajs02?cmd='+t,
+                datatype:'JSON',
+                success:function(data){
+                    display(data);
+                },
+                error:function(){}
+            });
+        };
+        $(document).ready(function(){
+            $('button').eq(0).click(function(){
+                getdata('a');
+            });
+            $('button').eq(1).click(function(){
+                getdata('b');
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>aj02</h1>
+    <button>DATA1</button><button>DATA2</button>
+    <div></div>
+</body>
+</html>
